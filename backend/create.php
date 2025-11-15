@@ -19,8 +19,14 @@ $code = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
 $sql = "INSERT INTO short_urls (code, long_url) VALUES ('$code', '$long_url')";
 $conn->query($sql);
 
-// Return short URL
-$short_url = "http://localhost/short-url-project/backend/redirect.php?c=$code";
+// Actual link for redirect (local)
+$real_url = "http://localhost/short-url-project/backend/redirect.php?c=$code";
 
-echo json_encode(["short_url" => $short_url]);
-?>
+// Fake short domain for display
+$display_url = "https://short.me/" . $code;
+
+// Return both
+echo json_encode([
+    "short_url" => $real_url,
+    "display_url" => $display_url
+]);

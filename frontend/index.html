@@ -10,35 +10,11 @@
 <h2>Short URL Generator</h2>
 
 <input type="text" id="urlInput" placeholder="Enter a long URL">
-<button onclick="shortenUrl()">Shorten</button>
+<button id="shortenBtn">Shorten</button>
 
 <div class="result" id="result"></div>
 
-<script>
-function shortenUrl() {
-    const url = document.getElementById("urlInput").value;
-
-    if (!url) {
-        alert("Please enter a URL");
-        return;
-    }
-
-    fetch("../backend/create.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: url })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.error) {
-            document.getElementById("result").innerHTML = data.error;
-        } else {
-            document.getElementById("result").innerHTML = 
-                `Short URL: <a href="${data.short_url}" target="_blank">${data.short_url}</a>`;
-        }
-    });
-}
-</script>
+<script src="js/script.js"></script>
 
 </body>
 </html>

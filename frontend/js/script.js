@@ -27,3 +27,6 @@ function shortenUrl() {
         document.getElementById("result").innerHTML = "Something went wrong!";
     });
 }
+
+// Add event listener to the button
+document.getElementById("shortenBtn").addEventListener("click", shortenUrl);
