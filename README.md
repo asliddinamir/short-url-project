@@ -37,3 +37,50 @@ CREATE TABLE IF NOT EXISTS short_urls (
     long_url TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+```
+
+# Configuration & Running the Project
+
+## Update Database Credentials
+Make sure to update `backend/db.php` with your MySQL credentials:
+
+```php
+$host = "localhost";
+$user = "root";       // your MySQL username
+$pass = "";           // your MySQL password
+$db   = "shortener_db";
+```
+
+## Running the Project Locally
+Place the project folder next to your other projects (e.g., in XAMPP htdocs).
+Start Apache and MySQL in XAMPP. Open your browser and go to:
+```
+http://localhost/short-url-project/frontend/index.html
+```
+Enter a long URL in the input field and click Shorten.
+The app will display a short URL in the format:
+```
+https://short.me/XXXXXX
+```
+Clicking the short URL will redirect to the original URL.
+
+## Project Structure
+```
+short-url-project/
+├── backend/
+│   ├── create.php       # Short URL generator API
+│   ├── redirect.php     # Redirect to original URL
+│   └── db.php           # Database connection
+├── frontend/
+│   ├── index.html       # Main frontend page
+│   ├── css/
+│   │   └── style.css    # CSS styling
+│   └── js/
+│       └── script.js      # JavaScript functionality
+├── db/
+    ├── database.sql     # Database setup file
+└── README.md            # Project instructions
+```
+
+## Author
+Asliddin Amirov
