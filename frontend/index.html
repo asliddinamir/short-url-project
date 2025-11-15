@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Short URL Generator</title>
+    <style>
+        body { font-family: Arial; padding: 30px; max-width: 500px; margin: auto; }
+        input { width: 100%; padding: 10px; margin: 10px 0; }
+        button { padding: 10px 20px; cursor: pointer; }
+        .result { margin-top: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h2>Short URL Generator</h2>
+
+<input type="text" id="urlInput" placeholder="Enter a long URL">
+<button onclick="shortenUrl()">Shorten</button>
+
+<div class="result" id="result"></div>
+
+<script>
+function shortenUrl() {
+    const url = document.getElementById("urlInput").value;
+
+    if (!url) {
+        alert("Please enter a URL");
+        return;
+    }
+
+    fetch("../backend/create.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: url })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.error) {
+            document.getElementById("result").innerHTML = data.error;
+        } else {
+            document.getElementById("result").innerHTML = 
+                `Short URL: <a href="${data.short_url}" target="_blank">${data.short_url}</a>`;
+        }
+    });
+}
+</script>
+
+</body>
+</html>
