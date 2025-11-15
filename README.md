@@ -37,14 +37,3 @@ CREATE TABLE IF NOT EXISTS short_urls (
     long_url TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-## Configuration & Running the Project
-
-### Update Database Credentials
-Make sure to update `backend/db.php` with your MySQL credentials:
-
-```php
-$host = "localhost";
-$user = "root";       // your MySQL username
-$pass = "";           // your MySQL password
-$db   = "shortener_db";
