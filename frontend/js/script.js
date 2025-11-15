@@ -19,7 +19,8 @@ function shortenUrl() {
         if (data.error) {
             resultDiv.innerHTML = data.error;
         } else {
-            resultDiv.innerHTML = `Short URL: <a href="${data.short_url}" target="_blank">${data.short_url}</a>`;
+            // Show fake short domain but link points to local redirect
+            resultDiv.innerHTML = `Short URL: <a href="${data.short_url}" target="_blank">${data.display_url}</a>`;
         }
     })
     .catch(err => {
